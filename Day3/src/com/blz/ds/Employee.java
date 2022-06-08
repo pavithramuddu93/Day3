@@ -9,8 +9,9 @@ public class Employee {
         int fullTimeHours = 0;
         int partTimeHours = 0;
         int workingDaysPerMonth = 0;
+        int monthlyWorkHours = 0;
 
-        while(workingDaysPerMonth<20)
+        while(workingDaysPerMonth<20 || monthlyWorkHours<100)
         {
             Random r = new Random();
             int attendance = r.nextInt(3);
@@ -31,9 +32,9 @@ public class Employee {
                 //System.out.println("\nEmployee is Absent");
             }
             workingDaysPerMonth++;
+            monthlyWorkHours = (fullTimeHours + partTimeHours);
         }
         System.out.println("Total working hours:" +(fullTimeHours+partTimeHours));
-        int monthlyWorkHours = (fullTimeHours + partTimeHours);
         int monthlyWage = empWagePerHour * monthlyWorkHours;
         System.out.println("Total wage for the month: " + monthlyWage);
     }
