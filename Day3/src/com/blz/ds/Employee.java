@@ -3,29 +3,38 @@ package com.blz.ds;
 import java.util.Random;
 
 public class Employee {
-    public static void main(String[] args) {
-
+    public static void main(String[] args)
+    {
         final int empWagePerHour = 20;
-        final int fullTimeHours = 8;
-        final int partTimeHours = 4;
+        int fullTimeHours = 0;
+        int partTimeHours = 0;
+        int workingDaysPerMonth = 0;
 
-        Random r = new Random();
-        int attendance = r.nextInt(3);
-        System.out.println("\nRandom value is: " + attendance);
+        while(workingDaysPerMonth<20)
+        {
+            Random r = new Random();
+            int attendance = r.nextInt(3);
+            System.out.println("\nRandom value is: " +attendance);
 
-        switch (attendance) {
-            case 1:
-                System.out.println("\nEmployee is Present Full time");
-                int ft_dailyWage = empWagePerHour * fullTimeHours;
-                System.out.println("wage for the day is " + ft_dailyWage);
-                break;
-            case 2:
-                System.out.println("\nEmployee is Present Part time");
-                int pt_dailyWage = empWagePerHour * partTimeHours;
-                System.out.println("wage for the day is " + pt_dailyWage);
-                break;
-            default:
-                System.out.println("\nEmployee is Absent");
+            if (attendance == 1)
+            {
+                fullTimeHours=fullTimeHours+8;
+                System.out.println(fullTimeHours);
+            }
+            else if (attendance == 2)
+            {
+                partTimeHours=partTimeHours+4;
+                System.out.println(partTimeHours);
+            }
+            else
+            {
+                //System.out.println("\nEmployee is Absent");
+            }
+            workingDaysPerMonth++;
         }
+        System.out.println("Total working hours:" +(fullTimeHours+partTimeHours));
+        int monthlyWorkHours = (fullTimeHours + partTimeHours);
+        int monthlyWage = empWagePerHour * monthlyWorkHours;
+        System.out.println("Total wage for the month: " + monthlyWage);
     }
 }
